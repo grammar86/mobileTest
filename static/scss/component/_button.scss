@@ -1,0 +1,131 @@
+@charset "utf-8";
+
+.button { display:inline-flex; position:relative; height:5rem; padding:0 1.5rem; border:1px solid var(--point-color-line); vertical-align: middle; text-align:center; font-size:1.8rem; color:#fff; background:var(--point-color); transition: all .3s ease; justify-content: center; align-items: center; font-size:1.6rem; --font-size:calc(1.6rem * 1.5); font-weight:500;
+    &.disabled,
+    &:disabled { border-color:#e3e3e3 !important; color:#c1c1c1 !important; cursor: auto; background:#e3e3e3 !important;}
+
+    &.line { color:#111111; background:#fff; border:1px solid #111111;
+        &.disabled,
+        &:disabled { color:#e3e3e3 !important; border-color:#e3e3e3 !important; background:transparent !important;}
+
+        /* 색상 */
+        &.blue { border-color:var(--point-color-line); color:var(--point-color-line); background:none;}
+    }
+
+    /* 색상 */
+    &.blue { border-color:var(--point-color-line); background:var(--point-color-line);}
+    
+    /* 사이즈 */
+    &.full { width:100%;}
+
+    @for $i from 10 through 50 {
+        &.fz#{$i} { --font-size:calc(#{$i}*0.1rem * 1.5) !important; }
+    }
+
+    &.morphing { transition: all .6s ease; width:var(--size-w); height:var(--size-w); 
+        .textOver { transition: all .1s ease;}
+
+        &.action { overflow: hidden; width:var(--size-w-h); height:var(--size-w-h); font-size:0; border-radius: 50%; color:rgba(255,255,255,0);
+            .textOver { opacity: 0; font-size:0;}
+        }
+    }
+}
+
+
+/* textbutton */
+.textButton { display: inline-flex; position:relative; padding-right:1.8rem; font-size:1.5rem; color:#666; letter-spacing:-0.05rem; font-weight:500; align-items: center;
+    &:after { content:''; display:block; position:absolute; right:0.5rem; top:50%; width:0.6rem; height:0.6rem; margin-top:-0.25rem; border:1px solid #666; border-width:1px 1px 0 0px; transform:rotate(45deg);}
+}
+
+.btnGroup { position:relative; display:flex; --btn-group-margin:0.4rem; margin-left:calc(-1 * var(--btn-group-margin)); margin-right:calc(-1 * var(--btn-group-margin)); justify-content: center;
+    > * { margin:0 var(--btn-group-margin);}
+    &.fixed { position:fixed; bottom:0; left:0; z-index:100; width:calc(100% + 1.6rem); padding:0; background:#fff;}
+
+    .right { position:absolute; top:0; right:0;}
+    .left { position:absolute; top:0; left:0;}
+
+    &.full {
+        > * { width:100%;}
+    }
+
+
+    &.right { display:block; text-align:right;
+        > * { width:auto;}
+    }
+}
+
+:not(.mobile) {
+    .button:hover { border:1px solid var(--point-color-hover); color:#fff; background:var(--point-color-hover);}
+
+    .button.line:hover { border:1px solid var(--point-color-line); color:var(--point-color); background:none;
+        .textOver > div {text-shadow: 0 var(--font-size) 0 var(--point-color-line);}
+    }
+
+    .button.disabled:hover,
+    .button:disabled:hover { border-color:#e3e3e3; color:#c1c1c1; background:#e3e3e3; transform:none; box-shadow:none;}
+
+    .button.line.disabled:hover,
+    .button.line:disabled:hover { background:none; transform:none; box-shadow:none;}
+} 
+
+
+
+.btnPlus { display:inline-flex; position:relative; flex:0 0 auto; width:3.5rem; height:3.5rem; border:1px solid #111; font-size:0;
+    &:before { content:''; display:block; position:absolute; top:50%; left:50%; width:1.5rem; height:0.2rem; background:#111; transform: translate(-50%, -50%);}
+    &:after { content:''; display:block; position:absolute; top:50%; left:50%; width:0.2rem; height:1.5rem; background:#111; transform: translate(-50%, -50%);}
+}
+
+.btnMinus { display:inline-flex; position:relative; flex:0 0 auto; width:3.5rem; height:3.5rem; border:1px solid #111; font-size:0;
+    &:before { content:''; display:block; position:absolute; top:50%; left:50%; width:1.5rem; height:.2rem; background:#111; transform: translate(-50%, -50%);}
+}
+
+
+/* tooltip */
+.tooltipWrap { display:inline-block; position:relative; vertical-align: middle;
+    .tooltip { overflow:hidden; display:block; width:2rem; height:2rem; font-size:0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='12px' height='12px' viewBox='0 0 12 12' enable-background='new 0 0 12 12' id='Слой_1' version='1.1' xml:space='preserve'%3E%3Cpath d='M6,0C2.6862793,0,0,2.6862793,0,6s2.6862793,6,6,6s6-2.6862793,6-6S9.3137207,0,6,0z M6.5,9.5h-1v-1h1V9.5z M7.2651367,6.1738281C6.7329102,6.5068359,6.5,6.6845703,6.5,7v0.5h-1V7c0-0.9023438,0.7138672-1.3486328,1.2348633-1.6738281 C7.2670898,4.9931641,7.5,4.8154297,7.5,4.5c0-0.5517578-0.4487305-1-1-1h-1c-0.5512695,0-1,0.4482422-1,1V5h-1V4.5 c0-1.1025391,0.8969727-2,2-2h1c1.1030273,0,2,0.8974609,2,2C8.5,5.4023438,7.7861328,5.8486328,7.2651367,6.1738281z' fill='%231D1D1B'/%3E%3C/svg%3E") no-repeat center center / 100%;}
+    .tooltipPop { display:none; position:absolute; top:calc(100% + 1rem); left:0; width:0rem;padding:2rem; border:1px solid #000; border-radius:.3rem; background:#fff; z-index:10; text-align:left; animation:fadeInUp .6s ease;
+        &:before { content:''; display:block; position:absolute; top:-.5rem; left:var(--tip-left); width:.5rem; height:.5rem; border:.1rem solid #000; border-color:#000 transparent transparent #000; transform: rotate(45deg); background:#fff;}
+        
+        .btnClose { display:block; position:absolute; top:1rem; right:1rem; width:2rem; height:2rem; font-size:0;
+            &:before { content:''; display:block; position:absolute; top:50%; left:50%; width:2px; height:15px; background:#000; transform-origin: 50% 50%; transform:translate(-50%, -50%) rotate(45deg);}
+            &:after { content:''; display:block; position:absolute; top:50%; left:50%; width:15px; height:2px; background:#000; transform-origin: 50% 50%; transform:translate(-50%, -50%) rotate(45deg);}
+        }
+    
+        /* 팝업형태 */
+        &.popup { position:fixed; top:50%; left:50% !important; right:auto !important; z-index:150; transform: translate(-50%,-50%);  animation:fadeIn .6s ease;
+            &:before { display:none;}
+        }
+    }
+}
+
+
+
+/* 클릭 모션 */
+.hoverMotion { overflow:hidden; position:relative;}
+.click-in { display:block; position:absolute; background:rgba(255,255,255,0.4); border-radius:100%; transform:scale(0); -webkit-transform:scale(0);}
+.click-in.animate {-webkit-animation:btnClick 0.65s linear;animation:btnClick 0.45s linear;}
+
+.line .click-in { background:rgba(0,0,0,0.4);}
+
+.hoverMotion1.on { overflow:hidden; position:relative; animation:clickMotionM .45s;}
+.hoverMotion2.on { overflow:hidden; position:relative; animation:clickMotionM2 .45s;}
+
+/* button */
+.button {
+    .textOver {overflow: hidden; color:inherit;
+        > div { transition: all .3s ease; color:inherit; text-shadow:0 var(--font-size) 0 #fff; line-height:1.5; font-weight:500;}
+    }
+
+    &.line {
+        .textOver > div {text-shadow: 0 var(--font-size) 0 #111;}
+        &.blue .textOver > div {text-shadow: 0 var(--font-size) 0 #1955f3;}
+    }
+} 
+
+:not(.mobile) {
+    .button:hover .textOver > div { transform:translateY(-100%);}
+    
+    .button:disabled:hover .textOver > div,
+    .button.disabled:hover .textOver > div { transform:translateY(0%);}
+}
+

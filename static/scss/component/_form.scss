@@ -1,0 +1,268 @@
+@charset "utf-8";
+
+/* form */
+.formBox {
+    & + .formBox { margin-top:.8rem;}
+    .tit { display:block; position:relative; font-size:1.8rem; margin-bottom:.8rem; color:#111; font-weight:bold;
+        .impo { position:absolute; top:0; left:-1.2rem; font-size:0;
+            &:after { content:'*'; font-size:1.8rem; color:#1955f3}
+        }
+        .smallText { display:block; font-size:1.5rem; color:#999;}
+    }
+    .inpText { display:flex; width:100%; height:4.8rem; border:0; padding:0 1.6rem; margin:0; font-size:1.5rem; align-items: center;;}
+    
+    .flex > * + * { margin-left:1.2rem;}
+    .text { margin-top:.8rem; text-align:left; font-size:1.5rem; color:#999999;}
+    .newBtn { min-width:13rem; height:4.8rem;}
+
+    &.flex { align-items: center;}
+    &.flex .tit { flex:0 0 auto; width:13rem; margin-bottom:0;}
+    &.flex > * + * { margin-left:1.2rem;}
+}
+
+.errorText { margin-top:.4rem; font-size:1.4rem; color:#ff0000;}
+.successText { margin-top:.4rem; font-size:1.4rem; color:#1955f3;}
+
+.maxCheck { margin-bottom:3rem;
+    .number { position:absolute; bottom:-.5rem; right:0; transform: translateY(100%);}
+}
+
+/* ========================================================= */
+/* input */
+/* ========================================================= */
+
+.inputBox { display:flex; position:relative; flex:1 1 auto; width:100%; justify-content: center; align-items: center; border:1px solid #e3e3e3; transition: all .3s ease; background:#fff;
+    input { flex:1 1 auto; width:100%; height:4.6rem; border:0; padding:0 1.6rem; margin:0; font-size:1.5rem; box-sizing: border-box; background:none; outline:none;
+        &:read-only { color:#111111; background:#f8f8f8;}
+        &:disabled { color: rgba(34,34,34,0.3); background:#f8f8f8;}
+    }
+    .util { margin-right:1.6rem; font-size:1.5rem;}
+    button { margin:0 .8rem;}
+    .btnClose { flex:0 0 auto; width:4.6rem; height:4.6rem; margin:0; font-size:0; background:url('../images/common/btn_close.png') no-repeat center center / 2.5rem; transition: all .3s ease;}
+
+    &.small {
+        input { height:3rem; font-size:1.4rem;}
+        .btnClose { width:3rem; height:3rem;}
+    }
+    &.focus { border-color:#111111;}
+
+    .code { display:flex; width:5.8rem; height:100%; border-right:1px solid #e3e3e3; text-align:center; font-size:1.5rem; text-align:center; background:#f5f5f5; align-items: center; justify-content: center;}
+
+    &.datepicker i { flex:0 0 auto; width:1.8rem; height:1.8rem; margin-right:1.2rem; background:url('../images/common/ico_calendar.png') no-repeat center center / 100%; cursor: pointer;}
+    &.datepicker.disabled { background:#f8f8f8;}
+    &.datepicker.disabled i { opacity:0.5;}
+
+    &.right input { padding-right:0; text-align:right;}
+
+    &.password {
+        .btnPwdShow { flex:0 0 auto; width:1.8rem; height:1.8rem; margin-right:1.6rem; font-size:0; background:url('../images/common/ico_pwd_off.png') no-repeat center center;}
+        &.show .btnPwdShow { background:url('../images/common/ico_pwd.png') no-repeat center center;}
+    }
+
+    &.fileBox { border:0;
+        input[type=text] { flex:1 1 auto; height:100%; border:1px solid #e3e3e3; }
+        input[type=file] { position:absolute; top:0; left:0; z-index:1; width:100%; height:100%; opacity:0;}
+        .newBtn { margin-left:12px;}
+    }
+}
+
+.error .inputBox { border-color:#ff0000;
+    &:after { content:'!'; display:flex; flex:0 0 auto; width:1.6rem; height:1.6rem; margin-right:1.2rem; border-radius:50%; font-size:1rem; color:#fff; background:#ff0000; align-items: center; justify-content: center;}
+    input { color:#ff0000;}
+}
+
+.success .inputBox { border-color:#1955f3;
+    input { color:#1955f3;}
+}
+
+/* ========================================================= */
+/* select */
+/* ========================================================= */
+
+.selectBox { display:flex; position:relative; flex:1 1 auto; width:100%; justify-content: center; align-items: center; border:1px solid #e3e3e3; transition: all .3s ease;
+    select { flex:1 1 auto; width:100%; height:4rem; border:0; padding:0 1.6rem; margin:0; font-size:1.5rem; box-sizing: border-box; background: url('../images/common/ico_select.png') no-repeat 99% center; outline:none;
+        &:disabled { color: rgba(34,34,34,0.3); background:#f8f8f8;}
+    }
+    .select { flex:1 1 auto; position:relative; width:100%; border:0; margin:0; font-size:1.6rem; box-sizing: border-box; outline:none;
+        .selectTit{
+            &:before { content:''; display:block; position:absolute; top:0; bottom:0; right:3.8rem; width:1px; background:#ddd;}
+            &:after { content:''; display:block; position:absolute; top:0; right:0rem; width:3.8rem; height:3.8rem; background:url('../images/common/ico_select.png') no-repeat center center / 1.1rem; transition: all .3s ease;}
+            &.on:after { transform: rotate(180deg);}
+        }
+        &:disabled { color: rgba(34,34,34,0.3); background:#f8f8f8;}
+        > a { overflow:hidden; display:block; width:100%; height:3.8rem; padding:0 4rem 0 1.6rem; align-items: center; background:#fff; text-overflow: ellipsis; white-space: nowrap; line-height:3.8rem; color:#333; font-size:1.4rem;}
+        .selectView { visibility: hidden; position:absolute; overflow-y:auto; bottom:0; left:0; z-indeX:1003; width:100%; max-height:15rem; border: 1px solid #E5E5E5; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); padding:.8rem 0; transform: translateY(100%); background:#fff; opacity: 0; transition: all .3s ease;
+            a { display:inline-flex; width:100%; min-height:2.8rem; padding:.8rem 1rem; font-size:1.54rem; color:#555; align-items: center; line-height:1.2;
+                &:hover,
+                &.on { color:#3981e3; background:#f9f9f9;}
+            }
+
+            &.active {opacity:1; visibility: visible;}
+        }
+    }
+
+    &.focus { border-color:#111;}
+
+    &.small {
+        .select {
+            > a { height:3.8rem; font-size:1.5rem; line-height:3.8rem;}
+        }
+        .selectView {
+            a { font-size:1.5rem;}
+        }
+    }
+    .success & { border-color:#1955f3;
+        .select {
+            > a { color:#1955f3;}
+        }
+    }
+    .error & { border-color:#ff0000;
+        .select {
+            > a { color:#ff0000;}
+        }
+    }
+
+    &.mo {
+        .select {
+            .selectView { visibility: hidden; position:fixed; bottom:0; top:0; left:0; right:0; width:100%; max-height:100%; border: 1px solid #E5E5E5; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); z-index:20; padding:.8rem 0; background:rgba(0,0,0,0.5); transform: translateY(0);opacity: 0; transition: all .3s ease;
+                .contBox { overflow-y: auto; position:fixed; bottom:0; left:0; right:0; max-height:50%; padding:2rem; background:#fff; border-radius:1rem 1rem 0 0; transform: translateY(100%); transition: all .3s ease;}
+                a { display:inline-flex; width:100%; height:auto; padding:1.5rem; font-size:1.6rem; color:#333; align-items: center;
+                    &:hover,
+                    &.on { background:#F5F4F7;}
+                }
+    
+                &.active {opacity:1; visibility: visible;transform: translateY(0%);
+                    .contBox { transform: translateY(0%); transition: all .3s ease .3s;}
+                }
+            }
+        }
+    
+        &.focus { border-color:#111;}
+    
+        &.small {
+            select { height:3rem; padding:0 2rem 0 1rem; font-size:1.4rem; background:url('../images/common/ico_select.png') no-repeat 99% center / 1.6rem;}
+        }
+    }
+
+    &.disabled {
+        .select > a {
+            cursor: initial;
+            color: rgba(34,34,34,.3);
+            background:#f8f8f8;
+        }
+    }
+}
+
+/* ========================================================= */
+/* textarea */
+/* ========================================================= */
+
+.textarea { display:block; position:relative; flex:1 1 auto; width:100%; justify-content: center; align-items: center; border:1px solid #ddd; border-radius: .6rem; transition: all .3s ease;
+    textarea { flex:1 1 auto; width:100%; height:12rem; border:0; padding:1.6rem 1.6rem; margin:0; font-size:1.5rem; box-sizing: border-box; background:none; outline:none; resize: none;
+        &:disabled { color: rgba(34,34,34,0.3); background:#f8f8f8;}
+    }
+
+    &.focus { border-color:#222;}
+
+    .count { padding:0 2rem 2rem; text-align:right; font-size:1.4rem; color:#999;}
+
+    &.auto {
+        .hiddenText { visibility: hidden; opacity:0; font-size:1.5rem; padding:1.6rem 1.6rem; min-height:5.45rem;}
+        textarea { position:absolute; top:0; left:0; right:0; bottom:0; height:auto; min-height:5.45rem;}
+    }
+}
+
+
+/* ========================================================= */
+/* checkbox */
+/* ========================================================= */
+
+.checkbox { line-height:0;
+    > * { vertical-align: middle;}
+    input { position:absolute; opacity:0;
+        &:checked + label i { border-color:#111; background:#111;
+            &:after { border-color:transparent transparent #fff #fff; transform:translate(-50%, -50%) rotate(-45deg) scale(1);}
+        }
+
+        &:disabled + label { color:#999;}
+        &:disabled + label i { border-color:#ddd; background:#f8f8f8;}
+        &:disabled:checked + label i { border-color:transparent; background:rgba(34,34,34,0.3);}
+    }
+    label { position:relative; display:inline-block; min-height:2.4rem; margin-right:.2rem; padding-top:0.1rem; padding-left:3.2rem; font-size:1.5rem; color:#333; cursor: pointer; line-height:1.5;
+        i { display:block; position: absolute; top:0; left:0; width:2.4rem; height:2.4rem; border-radius:0.4rem; border:1px solid #cccccc; background:#fff; transition: all .3s ease;
+            &:after { content:''; position:absolute; top:50%; left:50%; width:1rem; height:0.4rem; margin-top:-0.3rem; border:2px solid #fff; border-color:transparent transparent #cccccc #cccccc; transform:translate(-50%, -50%) rotate(0deg) scale(0); transition: all .3s ease;;}
+            &.type2 { top:0.2rem;}
+        }
+    }
+    
+    &.small label { min-height:0.2rem; padding-left:2.8rem; margin-right:1rem; font-size:1.4rem;}
+    &.small label i { top:0.2rem; width:2rem; height:2rem;
+        &:after { width:0.8rem; height:0.3rem;}
+    }
+    
+    & + .checkbox { margin-top:1.5rem;}
+    
+    &.noText label { padding-left:2.4rem; margin-right:0;}
+}
+
+/* ========================================================= */
+/* radio */
+/* ========================================================= */
+
+.radio {
+    input { position:absolute; opacity:0;
+        &:checked + label i { border-color:transparent; background:#111;
+            &:after { width:.9rem; height:.9rem; background:#fff;}
+        }
+
+        &:disabled + label i { border-color:#ccc; background:#f8f8f8;}
+        &:disabled:checked + label i { border-color:transparent; background:rgba(34,34,34,0.3);}
+    }
+    label { position:relative; padding-top:.1rem; padding-left:3.2rem; margin-right:2rem; font-size:1.5rem; color:#222; cursor: pointer;
+        i { display:block; position: absolute; top:0; left:0; width:2.4rem; height:2.4rem; border-radius:50%; border:1px solid #cccccc; background:#fff; transition: all .3s ease;;
+            &:after { content:''; position:absolute; top:50%; left:50%; width:1.2rem; height:1.2rem; border-radius:50%; background:#ccc; transition: all .3s ease; transform: translate(-50%,-50%);}
+        }
+    }
+    
+    
+    &.small label { padding-left:2.8rem; margin-right:1rem;}
+    &.small label i { top:.2rem; width:2rem; height:2rem;
+        &:after { width:1rem; height:1rem;}
+    }
+    &.small input:checked + label i:after { width:.8rem; height:.8rem;}
+}
+
+/* ========================================================= */
+/* toggle */
+/* ========================================================= */
+
+.togglebox {
+    input { position:absolute; opacity:0;}
+    label { display:block; position:relative; width:4.2rem; height:2.4rem; font-size:0; border-radius: 1.2rem; background:rgba(17, 17, 17, 0.3); transition: all .3s ease; cursor: pointer;
+        i { position:absolute; top:.2rem; left:.2rem; width:2rem; height:2rem; border-radius:50%; background:#fff; transition: all .3s ease;}
+    }
+    input:checked + label { background:#111;
+        i { left:2rem;}
+    }
+}
+
+.toggleRadio { display:flex;
+    input { position:absolute; opacity:0;}
+    label { flex:1 1 auto; width:100%; display:flex; position:relative; height:4.8rem; font-size:1.5rem; color:#666; align-items: center; justify-content: center; border:1px solid #ddd; background:#f8f8f8; cursor: pointer; transition: all .3s ease;}
+    label + label { margin-left:-.1rem;}
+    input:checked  + label { z-index:1; border:1px solid #222; color:#222; font-size:1.5rem; font-weight:bold; background:#fff;}
+    &.type2 label { background:#fff;}
+}
+
+
+/* ========================================================= */
+/* placeholder tip */
+/* ========================================================= */
+
+.placeholderTip { position:absolute; top:0; right:0; max-width:50%; padding:1rem .5rem; border-radius: .5rem; color:#fff; background:#111; transform: translateY(calc(-100% - 1.5rem)); animation: placeholderTipM .6s ease both; text-align:center;}
+.placeholderTip:after {content: ''; position:absolute; bottom:-1.2rem; left:50%; display:block; width:0; height:0; border:.6rem solid #111; border-color:#111 transparent transparent transparent;}
+
+@keyframes placeholderTipM {
+	0% { opacity: 0; transform: translateY(calc(-110% - 15px));}
+	100% { opacity: 1; transform: translateY(calc(-100% - 15px));}
+}

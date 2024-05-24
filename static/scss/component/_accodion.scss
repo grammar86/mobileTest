@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+/* 아코디언 */
+.accodionBox {
+    .tit { display:flex; position:relative; height:5rem; align-items: center; font-size:1.5rem; color:#111; font-weight: bold; transition: all .3s ease; border-bottom:1px solid #e3e3e3;
+        &:after { content:''; display:block; position:absolute; top:50%; right:0; flex:0 0 auto; width:2.4rem; height:2.4rem; margin-left:auto; background:url('../images/common/ico_select.png') no-repeat center center / 1.3rem; transition: all .3s ease; transform: translateY(-50%);}
+        &.single:after { display:none}
+    }
+    .accodionView { display:none; padding:1.5rem 3rem 3rem; background:#f8f8f8;}
+    .accodionView .checkbox { margin-top:1.5rem;}
+
+    &.on .tit { font-weight:bold;
+        a:after { transform:translateY(-50%) rotate(180deg);}
+    }
+}
+
+
+.tabContWrap {
+    .tabCont { display:none;}
+    &[data-tab-swiper] {overflow:hidden;}
+}
